@@ -12,15 +12,15 @@ public class ItemDto {
     Long id;
     String name;
     String description;
-    Boolean accessible;
+    Boolean available;
     Long ownerId;
     Long requestId;
 
-    public ItemDto(Long id, String name, String description, Boolean accessible, Long requestId) {
+    public ItemDto(Long id, String name, String description, Boolean available, Long requestId) {
         this.id = id;
         this.name = name;
         this.description = description;
-        this.accessible = accessible;
+        this.available = available;
         this.requestId = requestId;
     }
 }

@@ -15,14 +15,14 @@ public class Item {
     Long id;
     String name;
     String description;
-    Boolean accessible;
+    Boolean available;
     User owner;
     ItemRequest itemRequest;
 
-    public Item(String name, String description, Boolean accessible, User owner, ItemRequest itemRequest) {
+    public Item(String name, String description, Boolean available, User owner, ItemRequest itemRequest) {
         this.name = name;
         this.description = description;
-        this.accessible = accessible;
+        this.available = available;
         this.owner = owner;
         this.itemRequest = itemRequest;
     }

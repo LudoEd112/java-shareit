@@ -1,10 +1,12 @@
 package ru.practicum.shareit.user.validation;
 
 import lombok.SneakyThrows;
+import org.springframework.stereotype.Component;
 import ru.practicum.shareit.exception.BadRequestException;
 import ru.practicum.shareit.user.dao.UserRepository;
 import ru.practicum.shareit.user.dto.UserDto;
 
+@Component
 public class UserValidation {
     private UserRepository userRepository;
 
@@ -20,13 +22,6 @@ public class UserValidation {
 
         if (userDto.getEmail() == null || userDto.getEmail().isBlank() || !(userDto.getEmail().contains("@"))) {
             throw new BadRequestException("Почта не может не содержать символ @ или быть пустой");
-        }
-    }
-
-    @SneakyThrows
-    public void checkUserId(Long userDtoId) {
-        if (userDtoId == null) {
-            throw new BadRequestException("id пользователя не указан");
         }
     }
 }
