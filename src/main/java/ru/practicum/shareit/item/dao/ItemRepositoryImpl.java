@@ -11,9 +11,9 @@ import java.util.List;
 @Repository
 public class ItemRepositoryImpl implements ItemRepository {
 
-    Map<Long, Map<Long, Item>> userItems = new HashMap<>();
-    Map<Long, Item> items = new HashMap<>();
-    Long id = 1L;
+    private Map<Long, Map<Long, Item>> userItems = new HashMap<>();
+    private Map<Long, Item> items = new HashMap<>();
+    private Long id = 1L;
 
     @Override
     public Item create(Item item) {
