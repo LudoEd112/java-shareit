@@ -1,7 +1,8 @@
-package ru.practicum.shareit.request;
+package ru.practicum.shareit.item.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -11,30 +12,36 @@ import jakarta.persistence.Table;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import ru.practicum.shareit.user.model.User;
 
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "request")
+@Table(name = "comments")
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class ItemRequest {
+public class Comment {
     @Id
-    @Column(name = "request_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "comments_id")
     Long id;
 
-    @Column(name = "description")
-    String description;
+    @Column(name = "text")
+    String text;
 
-    @ManyToOne
-    @JoinColumn(name = "requestor_id")
-    User requestor;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "item_id", nullable = false)
+    Item item;
 
-    @Column(name = "creation_date")
-    LocalDateTime creationDate;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "author_id", nullable = false)
+    User author;
+
+    @Column(name = "created")
+    LocalDateTime created;
 
 }

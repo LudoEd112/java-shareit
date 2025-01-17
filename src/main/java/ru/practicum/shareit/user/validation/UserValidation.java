@@ -3,12 +3,10 @@ package ru.practicum.shareit.user.validation;
 import lombok.SneakyThrows;
 import org.springframework.stereotype.Component;
 import ru.practicum.shareit.exception.BadRequestException;
-import ru.practicum.shareit.user.dao.UserRepository;
 import ru.practicum.shareit.user.dto.UserDto;
 
 @Component
 public class UserValidation {
-    private UserRepository userRepository;
 
     @SneakyThrows
     public void checkUserFields(UserDto userDto) {
