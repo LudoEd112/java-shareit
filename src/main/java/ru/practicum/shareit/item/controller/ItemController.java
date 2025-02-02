@@ -25,8 +25,8 @@ import java.util.List;
 @RequiredArgsConstructor
 @RequestMapping("/items")
 public class ItemController {
-    @Autowired
-    private ItemService itemService;
+
+    private final ItemService itemService;
 
     @PostMapping
     public ItemDto create(@RequestHeader("X-Sharer-User-Id") Long userId, @RequestBody ItemDto itemDto) {

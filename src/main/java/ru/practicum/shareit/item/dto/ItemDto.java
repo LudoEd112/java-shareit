@@ -15,11 +15,4 @@ public class ItemDto {
     String name;
     String description;
     Boolean available;
-
-    public ItemDto(Long id, String name, String description, Boolean available, Long requestId) {
-        this.id = id;
-        this.name = name;
-        this.description = description;
-        this.available = available;
-    }
 }

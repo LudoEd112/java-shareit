@@ -1,7 +1,6 @@
 package ru.practicum.shareit.user.service;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.practicum.shareit.exception.BadRequestException;
 import ru.practicum.shareit.exception.NotFoundException;
@@ -17,10 +16,8 @@ import java.util.Collection;
 @RequiredArgsConstructor
 public class UserServiceImpl implements UserService {
 
-    @Autowired
-    private UserRepository userRepository;
-    @Autowired
-    private UserValidation userValidation;
+    private final UserRepository userRepository;
+    private final UserValidation userValidation;
 
     @Override
     public UserDto create(UserDto userDto) {

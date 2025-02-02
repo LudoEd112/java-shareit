@@ -1,5 +1,6 @@
 package ru.practicum.shareit.user.controller;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,11 +17,11 @@ import ru.practicum.shareit.user.service.UserService;
 import java.util.Collection;
 
 @RestController
+@RequiredArgsConstructor
 @RequestMapping(path = "/users")
 public class UserController {
 
-    @Autowired
-    private UserService userService;
+    private final UserService userService;
 
     @PostMapping
     public UserDto create(@RequestBody UserDto userDto) {

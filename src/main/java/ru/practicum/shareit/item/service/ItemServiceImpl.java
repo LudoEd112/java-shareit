@@ -1,7 +1,6 @@
 package ru.practicum.shareit.item.service;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.practicum.shareit.booking.BookingStatus;
 import ru.practicum.shareit.booking.dao.BookingRepository;
@@ -24,7 +23,6 @@ import ru.practicum.shareit.user.dto.UserDto;
 import ru.practicum.shareit.user.mapper.UserMapper;
 import ru.practicum.shareit.user.model.User;
 import ru.practicum.shareit.user.service.UserService;
-import ru.practicum.shareit.user.validation.UserValidation;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -38,17 +36,10 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class ItemServiceImpl implements ItemService {
 
-    @Autowired
-    private ItemRepository itemRepository;
-    @Autowired
-    private ItemValidation itemValidation;
-    @Autowired
-    private UserService userService;
-    @Autowired
-    private UserValidation userValidation;
-
+    private final ItemRepository itemRepository;
+    private final ItemValidation itemValidation;
+    private final UserService userService;
     private final BookingRepository bookingRepository;
-
     private final CommentRepository commentRepository;
 
     @Override
@@ -144,7 +135,6 @@ public class ItemServiceImpl implements ItemService {
         if (bookings == null) {
             throw new BadRequestException("Пользователь не бронировал вещь");
         }
-
 
         if (bookings.getFirst().getStartBooking().isBefore(LocalDateTime.now())) {
             Comment comment = CommentMapper.toComment(commentDto, user, item);
