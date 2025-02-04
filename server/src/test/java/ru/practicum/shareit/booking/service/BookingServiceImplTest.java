@@ -291,7 +291,6 @@ class BookingServiceImplTest {
     @Test
     @DisplayName("BookingService_findAllByOwnerIdAll")
     void testFindAllByOwnerIdAll() {
-        
         when(bookingRepository.findAllByItemOwnerIdOrderByStartBookingDesc(1L)).thenReturn(List.of(booking, booking1));
 
         final List<BookingFullDto> bookingResponses = bookingService.getAllByOwner(1L, "all");
